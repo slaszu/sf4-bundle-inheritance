@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\OtherBundle\Service\RandomNumberService:
+    public: true
+    arguments:
+      $params: "%other.params%"

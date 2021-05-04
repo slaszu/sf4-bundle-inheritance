@@ -1,0 +1,5 @@
+page_index:
+  path: '/{name}'
+  controller: App\PageExtendBundle\Controller\DefaultController::indexAction
+  defaults:
+    name: '__undefined__'

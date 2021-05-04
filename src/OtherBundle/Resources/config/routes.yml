@@ -1,0 +1,5 @@
+other_index:
+  path: '/{name}'
+  controller: App\OtherBundle\Controller\DefaultController::indexAction
+  defaults:
+    name: '__undefined__'

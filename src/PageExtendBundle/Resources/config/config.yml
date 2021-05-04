@@ -1,0 +1,5 @@
+parameters:
+  page.params:
+    - 'a extended'
+    - 'b extended'
+    - 'c extended'

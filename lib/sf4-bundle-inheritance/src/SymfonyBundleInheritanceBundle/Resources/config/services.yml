@@ -1,0 +1,4 @@
+services:
+  SymfonyBundleInheritanceBundle\Util\KernelBundles:
+    arguments:
+      $kernelBundles: '%kernel.bundles_metadata%'

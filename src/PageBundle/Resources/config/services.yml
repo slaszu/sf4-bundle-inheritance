@@ -1,0 +1,5 @@
+services:
+  App\PageBundle\Service\RandomNumberService:
+    public: true
+    arguments:
+      $params: "%page.params%"
