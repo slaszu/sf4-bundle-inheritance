@@ -14,7 +14,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request, string $name = ''): Response
     {
         $random = $this->get(RandomNumberService::class);
-        return $this->render('@Page/default/index.html.twig',[
+        return $this->render('@Other/default/index.html.twig',[
             'controller' => __CLASS__,
             'name' => $name,
             'params' => (string)$random

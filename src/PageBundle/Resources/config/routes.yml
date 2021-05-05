@@ -3,3 +3,10 @@ page_index:
   controller: PageBundle:Default:index
   defaults:
     name: '__undefined__'
+
+
+page_index2:
+  path: '/index2/{name}'
+  controller: PageBundle:Default:index2
+  defaults:
+    name: '__undefined__'

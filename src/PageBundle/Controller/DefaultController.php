@@ -20,4 +20,14 @@ class DefaultController extends Controller
             'params' => (string)$random
         ]);
     }
+
+    public function index2Action(Request $request, string $name = ''): Response
+    {
+        $random = $this->get(RandomNumberService::class);
+        return $this->render('@Page/default/index2.html.twig',[
+            'controller' => __CLASS__,
+            'name' => $name,
+            'params' => (string)$random
+        ]);
+    }
 }

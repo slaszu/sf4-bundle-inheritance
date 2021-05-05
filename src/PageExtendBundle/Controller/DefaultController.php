@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\PageExtendBundle\Controller;
 
+use App\PageBundle\Controller\DefaultController as DefaultControllerBase;
 use App\PageExtendBundle\Service\RandomNumberService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class DefaultController extends DefaultControllerBase
 {
     public function indexAction(Request $request, string $name = ''): Response
     {
