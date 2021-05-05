@@ -1,17 +1,18 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\OtherBundle\Service;
 
-use SymfonyBundleInheritanceBundle\Util\KernelBundles;
+use SymfonyBundleInheritanceBundle\Util\KernelBundlesService;
 
 class RandomNumberService
 {
     private array $params = [];
 
-    private KernelBundles $kernelBundles;
+    private KernelBundlesService $kernelBundles;
 
-    public function __construct(array $params = [], KernelBundles $kernelBundles)
+    public function __construct(array $params = [], KernelBundlesService $kernelBundles)
     {
         $this->params = $params;
         $this->kernelBundles = $kernelBundles;
@@ -19,8 +20,9 @@ class RandomNumberService
 
     public function __toString(): string
     {
-        dump($this->kernelBundles);
-        $this->params['random'] = rand(1000,9999);
+        dump($this->kernelBundles->getKernelBundles());
+        dump($this->kernelBundles->getBundleHierarchyCollection());
+        $this->params['random'] = rand(1000, 9999);
         return var_export($this->params, true);
     }
 }

@@ -5,3 +5,7 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
+
+  SymfonyBundleInheritanceBundle\:
+    resource: '../../*'
+    exclude: '../../{DependencyInjection,Entity,Tests,SymfonyBundleInheritanceBundle.php}'
