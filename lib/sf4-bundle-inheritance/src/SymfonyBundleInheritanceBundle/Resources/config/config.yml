@@ -1,6 +1,3 @@
-imports:
-  - { resource: services.yml }
-
 services:
   _defaults:
     autowire: true
@@ -9,3 +6,14 @@ services:
   SymfonyBundleInheritanceBundle\:
     resource: '../../*'
     exclude: '../../{DependencyInjection,Entity,Tests,SymfonyBundleInheritanceBundle.php}'
+
+
+# util:
+  SymfonyBundleInheritanceBundle\Util\ParentChild\Collection:
+    factory: ['@SymfonyBundleInheritanceBundle\Util\ParentChild\CollectionFactory','getCollection']
+
+# controller: override controller resolver
+  SymfonyBundleInheritanceBundle\ControllerInheritance\ControllerResolver:
+    decorates: 'controller_resolver'
+    calls:
+      - ['setParentChildCollection', ['@SymfonyBundleInheritanceBundle\Util\ParentChild\Collection']]

@@ -8,5 +8,5 @@ return [
     App\PageBundle\PageBundle::class => ['all' => true],
     App\PageExtendBundle\PageExtendBundle::class => ['all' => true],
     App\OtherBundle\OtherBundle::class => ['all' => true],
-    SymfonyBundleInheritanceBundle\SymfonyBundleInheritanceBundle::class => ['all' => true]
+    SymfonyBundleInheritanceBundle\SymfonyBundleInheritanceBundle::class => ['all' => true],
 ];

@@ -13,6 +13,7 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request, string $name = ''): Response
     {
+        dump('PAGE EXTENDED CONTROLLER !!!!!');
         $random = $this->get(RandomNumberService::class);
         return $this->render('@Page/default/index.html.twig',[
             'controller' => __CLASS__,

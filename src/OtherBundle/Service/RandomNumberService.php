@@ -4,24 +4,23 @@ declare(strict_types=1);
 
 namespace App\OtherBundle\Service;
 
-use SymfonyBundleInheritanceBundle\Util\KernelBundlesService;
+use SymfonyBundleInheritanceBundle\Util\ParentChild\Collection;
 
 class RandomNumberService
 {
     private array $params = [];
 
-    private KernelBundlesService $kernelBundles;
+    private Collection $collection;
 
-    public function __construct(array $params = [], KernelBundlesService $kernelBundles)
+    public function __construct(array $params = [], Collection $collection)
     {
         $this->params = $params;
-        $this->kernelBundles = $kernelBundles;
+        $this->collection = $collection;
     }
 
     public function __toString(): string
     {
-        dump($this->kernelBundles->getKernelBundles());
-        dump($this->kernelBundles->getBundleHierarchyCollection());
+        dump($this->collection);
         $this->params['random'] = rand(1000, 9999);
         return var_export($this->params, true);
     }

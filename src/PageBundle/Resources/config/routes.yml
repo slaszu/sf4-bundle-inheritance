@@ -1,5 +1,5 @@
 page_index:
   path: '/{name}'
-  controller: App\PageBundle\Controller\DefaultController::indexAction
+  controller: PageBundle:Default:index
   defaults:
     name: '__undefined__'
