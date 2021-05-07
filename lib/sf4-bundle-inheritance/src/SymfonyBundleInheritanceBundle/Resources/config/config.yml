@@ -1,28 +1,36 @@
 services:
-  _defaults:
-    autowire: true
-    autoconfigure: true
+    _defaults:
+        autowire: true
+        autoconfigure: true
 
-  SymfonyBundleInheritanceBundle\:
-    resource: '../../*'
-    exclude: '../../{DependencyInjection,Entity,Tests,SymfonyBundleInheritanceBundle.php}'
+    SymfonyBundleInheritanceBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Entity,Tests,SymfonyBundleInheritanceBundle.php}'
 
 
-  # util:
-  SymfonyBundleInheritanceBundle\Util\ParentChild\Collection:
-    factory: [ '@SymfonyBundleInheritanceBundle\Util\ParentChild\CollectionFactory','getCollection' ]
+    # util:
+    SymfonyBundleInheritanceBundle\Util\ParentChild\CollectionFactory: {}
 
-  # controller: override controller resolver
-  SymfonyBundleInheritanceBundle\ControllerInheritance\ControllerResolver:
-    decorates: 'controller_resolver'
-    calls:
-      - [ 'setParentChildCollection', [ '@SymfonyBundleInheritanceBundle\Util\ParentChild\Collection' ] ]
+    SymfonyBundleInheritanceBundle\Util\ParentChild\Collection:
+        factory: [ '@SymfonyBundleInheritanceBundle\Util\ParentChild\CollectionFactory','getCollection' ]
 
-  # template: add twig loader at top of loaders chain
-  SymfonyBundleInheritanceBundle\TemplateInheritance\TwigLoader:
-    arguments:
-      $rootPath: '%kernel.project_dir%'
-    calls:
-      - [ 'initInheritance' , [ '@SymfonyBundleInheritanceBundle\Util\ParentChild\Collection' ] ]
-    tags:
-      - { name: twig.loader, priority: 1000 }
+    # controller: override controller resolver
+    SymfonyBundleInheritanceBundle\ControllerInheritance\ControllerResolver:
+        decorates: 'controller_resolver'
+        calls:
+            - [ 'initInheritance', [ '@SymfonyBundleInheritanceBundle\Util\ParentChild\Collection' ] ]
+
+    SymfonyBundleInheritanceBundle\Command\ControllerAsServiceDecoratorCreateCommand:
+        arguments:
+            $container: '@service_container'
+        tags:
+            - { name: console.command, command: 'symfony-inheritance:controller-as-service'}
+
+    # template: add twig loader at top of loaders chain
+    SymfonyBundleInheritanceBundle\TemplateInheritance\TwigLoader:
+        arguments:
+            $rootPath: '%kernel.project_dir%'
+        calls:
+            - [ 'initInheritance' , [ '@SymfonyBundleInheritanceBundle\Util\ParentChild\Collection' ] ]
+        tags:
+            - { name: twig.loader, priority: 1000 }

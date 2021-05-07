@@ -25,8 +25,12 @@ class CollectionFactory
         foreach ($this->kernel->getBundles() as $bundle) {
             if (method_exists($bundle, $methodName)) {
                 $parentBundleName = $bundle->{$methodName}();
-                $parentBundle = $this->kernel->getBundle($parentBundleName);
+                if (!is_string($parentBundleName)) {
+                    // method could return some other types, then we dont know how to process them
+                    continue;
+                }
 
+                $parentBundle = $this->kernel->getBundle($parentBundleName);
                 $bundleHierarchyCollection->set($parentBundle->getName(), new Item($parentBundle, $bundle));
             }
         }

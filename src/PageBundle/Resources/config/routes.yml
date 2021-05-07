@@ -7,6 +7,13 @@ page_index:
 
 page_index2:
   path: '/index2/{name}'
+  controller: App\PageBundle\Controller\DefaultController::index2Action
+  defaults:
+    name: '__undefined__'
+
+
+page_index3:
+  path: '/index3/{name}'
   controller: PageBundle:Default:index2
   defaults:
     name: '__undefined__'

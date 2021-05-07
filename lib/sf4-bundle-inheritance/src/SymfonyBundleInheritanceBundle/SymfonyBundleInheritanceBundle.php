@@ -12,10 +12,10 @@ class SymfonyBundleInheritanceBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
-        parent::build($container);
+        //parent::build($container);
 
         // controller override
-        $container->addCompilerPass(new ControllerResolverPass());
+        //$container->addCompilerPass(new ControllerResolverPass());
     }
 
 }
